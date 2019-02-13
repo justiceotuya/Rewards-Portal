@@ -1,33 +1,37 @@
 {
-  "name": "rewards-portal",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "moment": "^2.24.0",
-    "node-sass": "^4.11.0",
-    "react": "^16.8.1",
-    "react-day-picker": "^7.2.4",
-    "react-dom": "^16.8.1",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "devDependencies": {
-    "react-test-renderer": "^16.8.1"
-  }
+	"name": "rewards-portal",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"moment": "^2.24.0",
+		"node-sass": "^4.11.0",
+		"react": "^16.8.1",
+		"react-day-picker": "^7.2.4",
+		"react-dom": "^16.8.1",
+		"react-router": "^4.3.1",
+		"react-router-dom": "^4.3.1",
+		"react-scripts": "2.1.4"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	],
+	"devDependencies": {
+		"ghpages": "^0.0.10",
+		"react-test-renderer": "^16.8.1"
+	},
+	"homepage": "http://justiceotuya.github.io/rewards-portal"
 }
