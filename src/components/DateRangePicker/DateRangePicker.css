@@ -1,0 +1,25 @@
+.link {
+	display: inline-block;
+	border: none;
+	border-radius: 2rem;
+	padding: 0.4rem 1rem;
+	text-decoration: none;
+	font-size: 1rem;
+	cursor: pointer;
+	text-align: center;
+	transition: background 250ms ease-in-out, transform 150ms ease;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	outline: none;
+}
+
+.link:focus,
+.link:hover {
+	outline: none;
+	background: #2f2d2e;
+	color: #ffffff;
+}
+
+.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+	background-color: #2f2d2e !important;
+}

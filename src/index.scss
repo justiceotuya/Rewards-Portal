@@ -1,0 +1,96 @@
+@font-face {
+	font-family: 'Circular Std Book';
+	src: url('./assets/CircularStd-Book.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Circular Std Bold';
+	src: url('./assets/CircularStd-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Circular Std Black';
+	src: url('./assets/CircularStd-Black.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Circular Std Medium';
+	src: url('./assets/CircularStd-Medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src: url('./assets/icons.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^='icon-'],
+[class*=' icon-'] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icomoon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-cms:before {
+	content: '\e900';
+}
+
+.icon-user:before {
+	content: '\e901';
+}
+
+.icon-settings:before {
+	content: '\e902';
+}
+
+.icon-reporting:before {
+	content: '\e903';
+}
+
+.icon-dashboard:before {
+	content: '\e904';
+}
+
+body {
+	font-family: 'Circular Std Book';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%; //1rem = 10px, 10px/16px = 62.5%
+}

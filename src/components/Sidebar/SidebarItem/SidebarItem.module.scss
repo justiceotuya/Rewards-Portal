@@ -1,0 +1,45 @@
+.nav {
+	&__list {
+		margin-left: 2rem;
+		padding: 5.9rem 0;
+	}
+	&__item {
+		color: #c0c0c0;
+		font-size: 14px;
+		font-weight: 300;
+		letter-spacing: -0.25px;
+		list-style-type: none;
+		&:not(:last-child) {
+			margin-bottom: 2rem;
+		}
+		&__list {
+		}
+		&__secondary {
+			list-style-type: none;
+			margin-left: 5.8rem;
+			margin-top: 0.8rem;
+		}
+	}
+	&__icon {
+		margin-right: 0.8rem;
+		font-size: 20px;
+		vertical-align: middle;
+	}
+	&__link:link,
+	&__link:visited {
+		color: currentColor;
+		text-decoration: none;
+		vertical-align: middle;
+		position: relative;
+
+		&:hover,
+		.active {
+			color: #ffffff;
+		}
+	}
+	&__link__more {
+		position: absolute;
+		top: -0.1rem;
+		left: 19rem;
+	}
+}

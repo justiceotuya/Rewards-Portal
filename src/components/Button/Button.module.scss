@@ -1,0 +1,44 @@
+.button {
+	display: inline-block;
+	border: none;
+	border-radius: 2rem;
+	padding: 1rem 2rem;
+	margin-right: 0.5rem;
+	text-decoration: none;
+	font-size: 1rem;
+	cursor: pointer;
+	text-align: center;
+	transition: background 250ms ease-in-out, transform 150ms ease;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+.apply__btn {
+	background-color: #d42e12;
+	color: #ffffff;
+}
+.cancel__btn {
+	background-color: #ffffff;
+	border: 1px solid #2f2d2e;
+	color: #2f2d2e;
+}
+
+.apply__btn:hover,
+.apply__btn:focus {
+	background: #0053ba;
+}
+
+.cancel__btn:hover,
+.cancel__btn:focus {
+	background: #2f2d2e;
+	color: #ffffff;
+}
+
+.button:focus {
+	outline: 1px solid #fff;
+	outline-offset: -4px;
+}
+
+.button:active {
+	transform: scale(0.99);
+}

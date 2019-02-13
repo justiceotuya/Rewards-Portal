@@ -1,0 +1,45 @@
+.header {
+	display: flex;
+	// align-items: flex-end;
+	padding: 2rem 2rem 2rem 6rem;
+
+	height: 60px;
+	box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+	width: 100px;
+}
+
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex: 1;
+	&__bell {
+		background-color: #c0c0c0;
+		font-size: 1.1rem;
+		color: #ffffff;
+		border-radius: 50%;
+		height: 2.4rem;
+		width: 2.4rem;
+		vertical-align: middle;
+		line-height: 2.4rem;
+		text-align: center;
+		margin-right: 1.6rem;
+	}
+	&__user {
+		height: 3.2rem;
+		width: 3.2rem;
+		border-radius: 50%;
+	}
+}
+
+@media (min-width: 1024px) {
+	.logo {
+		width: 156px;
+	}
+	.header {
+		padding: 2rem 5rem 2rem 3rem;
+	}
+}

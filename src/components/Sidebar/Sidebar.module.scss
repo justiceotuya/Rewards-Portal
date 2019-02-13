@@ -1,0 +1,30 @@
+.nav {
+	background-color: #2f2d2e;
+	flex: 0 0 25rem;
+	height: calc(100vh + 6rem);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.copyright {
+	margin-left: 2rem;
+
+	&__img {
+		width: 9rem;
+	}
+	&__text {
+		color: #9b9b9b;
+		margin: 2rem 0;
+		margin-right: 5rem;
+	}
+}
+.active {
+	color: #ffffff !important;
+}
+
+@media (min-width: 814px) {
+	.nav {
+		height: calc(100vh - 6rem);
+	}
+}

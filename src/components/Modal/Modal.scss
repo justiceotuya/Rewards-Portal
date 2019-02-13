@@ -1,0 +1,33 @@
+.modal {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	background: rgba(grey, 0.8);
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.3s;
+}
+
+.modal_body {
+	// width: 100%;
+	background-color: #ffffff;
+	padding: 2rem 4rem;
+	display: flex;
+	flex-direction: row-reverse;
+	font-size: 2rem;
+}
+
+.modal__close {
+	color: #ffffff;
+	cursor: pointer;
+	display: flex;
+	background-color: red;
+	height: 2rem;
+	width: 3rem;
+	justify-content: center;
+	align-items: center;
+}

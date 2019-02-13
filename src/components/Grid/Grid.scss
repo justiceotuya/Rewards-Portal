@@ -1,0 +1,99 @@
+.Box {
+	background-color: #ffffff;
+	border: 0.5px solid #d6d6d6;
+	// box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+	padding: 2rem;
+}
+
+.bigBox {
+	grid-column: 3/span 2;
+	grid-row: 1/span 2;
+	border: 0.5px solid #d6d6d6;
+	&__header {
+		width: 100%;
+		height: 6rem;
+		border-bottom: 0.5px solid #979797;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 2rem;
+	}
+	&__title {
+		color: #4a4a4a;
+		font-size: 14px;
+		font-weight: 700;
+	}
+
+	&__time {
+		display: flex;
+	}
+	&__month,
+	&__alltime {
+		color: #4a4a4a;
+		font-size: 12px;
+		font-weight: 300;
+		align-self: center;
+	}
+	&__alltime {
+		margin-left: 2rem;
+		background-color: #c82b1d;
+		border-radius: 2rem;
+		padding: 1rem 2rem;
+		color: #ffffff;
+	}
+}
+
+.smallBox1 {
+	grid-area: 1/1/1/1;
+	border-bottom: 2px solid #ff3d69;
+}
+.smallBox2 {
+	grid-area: 1/2/1/2;
+	border-bottom: 2px solid #00c3a2;
+}
+.smallBox3 {
+	// grid-area: 1/1/1/1;
+	grid-column: 1/span 1;
+	grid-row: 2/span 1;
+	border-bottom: 2px solid #00c9e0;
+}
+.smallBox4 {
+	// grid-area: 1/1/1/1;
+	grid-column: 2/span 1;
+	grid-row: 2/span 1;
+	border-bottom: 2px solid #7269d0;
+}
+.number {
+	color: #4a4a4a;
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 36px;
+	margin-bottom: 0.5rem;
+}
+.description {
+	color: #4a4a4a;
+	font-size: 12px;
+	font-weight: 300;
+	line-height: 14px;
+}
+
+.bigBox__content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-row-gap: 2rem;
+	padding: 2rem;
+}
+.content {
+	&__text {
+		color: #4a4a4a;
+		font-size: 12px;
+		font-weight: 300;
+		line-height: 14px;
+	}
+	&__number {
+		color: #4a4a4a;
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 19px;
+	}
+}
