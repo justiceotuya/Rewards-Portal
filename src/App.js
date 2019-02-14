@@ -256,16 +256,49 @@ const App = props => {
 		handleLeftPagination: handleLeftPagination
 	};
 
-	return (
+	////////handle login
+	// set login and authentication
+	const [userName, setUserName] = useState(null);
+	const [password, setPassword] = useState(null);
+	const [isAuthenticated, setAuthentication] = useState(false);
+
+	// handle login on submit
+	const handleLogin = e => {
+		e.preventDefault();
+		if (userName === 'admin' && password === 'admin') {
+			// window.location.href = '/dashboard';
+			setAuthentication(true);
+		} else {
+			alert('please use "admin" as username and password to login');
+		}
+	};
+
+	//handle username
+	const handleUsernameChange = e => {
+		setUserName(e.target.value);
+	};
+
+	//handle password
+	const handlePasswordChange = e => {
+		setPassword(e.target.value);
+	};
+
+	//check if user is authenticated before alowing user to log in
+	return isAuthenticated ? (
 		<DataContext.Provider value={contextValue}>
-			{/* <Layout>
+			<Layout>
 				<Route path={baseUrl + '/'} exact component={Dashboard} />
 				<Route path={baseUrl + '/dashboard'} component={Dashboard} />
 				<Route exact path={baseUrl + '/reporting/portal-report'} component={PortalReport} />
 				<Route exact path={baseUrl + '/user-management/admin-users'} component={AdminUsers} />
-			</Layout> */}
-			<Login />
+			</Layout>
 		</DataContext.Provider>
+	) : (
+		<Login
+			handleLogin={handleLogin}
+			handleUsernameChange={handleUsernameChange}
+			handlePasswordChange={handlePasswordChange}
+		/>
 	);
 };
 
