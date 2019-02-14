@@ -16,19 +16,19 @@ export default function PageHeader(props) {
 						<i className="fas fa-angle-down" />
 					</span>
 				</span>
+
+				{/* toggle  the date picker on if the toggle datepicker is true*/}
+				{toggleDatePicker ? (
+					<div className={styles.date}>
+						<ul name="date" id="date">
+							<PageHeaderList activeIndex={activeIndex} handleClick={handleClick} />
+
+							<Button value="Apply" />
+							<Button value="Cancel" />
+						</ul>
+					</div>
+				) : null}
 			</div>
-
-			{/* toggle  the date picker on if the toggle datepicker is true*/}
-			{toggleDatePicker ? (
-				<div className={styles.date}>
-					<ul name="date" id="date">
-						<PageHeaderList activeIndex={activeIndex} handleClick={handleClick} />
-
-						<Button value="Apply" />
-						<Button value="Cancel" />
-					</ul>
-				</div>
-			) : null}
 
 			<div className={styles.pageSearch}>
 				<form className={styles.pageSearch__form}>

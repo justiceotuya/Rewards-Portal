@@ -8,12 +8,12 @@ import style from './Dashboard.module.scss';
 import { SmallGrid, BigGrid } from '../../components/Grid/Grid';
 
 export default function Dashboard(props) {
+
 	return (
 		<DataContext.Consumer>
 			{/* <React.Fragment> */}
 			{context => (
 				<React.Fragment>
-					{console.log(context)}
 					<PageHeader
 						date={context.date}
 						page="Dashboard"

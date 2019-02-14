@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import moment from 'moment';
 import DayPicker, { DateUtils } from 'react-day-picker';
@@ -6,9 +6,11 @@ import { Route } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import PortalReport from './Pages/PortalReport/PortalReport';
 import AdminUsers from './Pages/AdminUsers/AdminUsers';
-
+import TotalAdminUserData from './assets/Data/adminData.json';
+import TotalCustomersData from './assets/Data/customersData.json';
+import Login from './Pages/Login/Login';
 export const DataContext = React.createContext();
-
+const baseUrl = process.env.PUBLIC_URL;
 const App = props => {
 	// create a context to pass data to all children
 	// const DataContext = React.createContext();
@@ -119,6 +121,122 @@ const App = props => {
 		);
 	};
 
+	// let test = [];
+	// let count = 10;
+	// let pageSize = count + 10;
+	// for (var i = count; i < pageSize; i++) {
+	// 	test.push(data[i]);
+	// 	count = i;
+	// }
+	const getInitialPaginationData = data => {
+		let newData = [];
+		let count = 0;
+		let pageSize = count + 10;
+		for (var i = count; i < pageSize; i++) {
+			newData.push(data[i]);
+			count = i;
+		}
+
+		return newData;
+	};
+
+	// const handleRightPagination = () => {
+	// 	let newData = [];
+	// 	let count = adminUserData.count;
+	// 	let pageSize = count + 10;
+	// 	for (var i = count; i < pageSize; i++) {
+	// 		newData.push(TotalAdminUserData[i]);
+	// 		count = i + 1;
+	// 	}
+	// 	setAdminUserData({
+	// 		count: count,
+	// 		adminUserData: newData
+	// 	});
+	// };
+	const handleRightPagination = data => {
+		console.log(this);
+		// let newData = [];
+		// let count = adminUserData.count;
+		// let pageSize = count + 10;
+		// for (var i = count; i < pageSize; i++) {
+		// 	newData.push(TotalAdminUserData[i]);
+		// 	count = i + 1;
+		// }
+		// setAdminUserData({
+		// 	count: count,
+		// 	adminUserData: newData
+		// });
+		// console.log(count);
+	};
+
+	const handleLeftPagination = () => {
+		alert('handleLeftPagination clicked');
+	};
+	// get Total Pages
+	const getTotalPages = (dataSize, pageSize) => {
+		return Math.ceil(dataSize / pageSize);
+	};
+
+	const getIncrementalPaginationData = data => {
+		// let newData = [];
+		// let count =
+	};
+
+	//create hook to get and set admin user data;
+	const [adminUserData, setAdminUserData] = useState({
+		totalAdminUserData: TotalAdminUserData,
+		adminUserData: next(0, 9, TotalAdminUserData),
+		count: 10,
+		currentPage: 0,
+		test: handleRightPagination(TotalAdminUserData),
+		pageSize: pageSize(10, TotalAdminUserData),
+		disabled: false,
+		TotalPages: getTotalPages(TotalAdminUserData.length, 10)
+	});
+
+	function pageSize(page, list) {
+		return Math.floor(list.length / page);
+	}
+
+	function next(page, size, list) {
+		var start = page * size;
+		var end = start + size;
+		return sublist(start, end, list);
+	}
+
+	//start is the start index from the original list
+	//end is the stop index from the original list
+	//list the original list to pull sub list
+	function sublist(start, end, list) {
+		var tmp = [];
+		if (list === null || list.length === 0) {
+			return tmp;
+		} else {
+			for (var i = 0; i < list.length; i++) {
+				if (i >= start && i <= end) {
+					tmp.push(list[i]);
+				}
+			}
+			return tmp;
+		}
+	}
+
+	console.log(adminUserData);
+
+	console.log('tester', next(0, 10, TotalCustomersData));
+
+	//pages to show
+	console.log('pageSize', pageSize(10, TotalCustomersData));
+
+	//create hook to get and set customers user data;
+	const [customersData, setCustomersData] = useState({
+		totalCustomersData: TotalCustomersData,
+		customersData: getInitialPaginationData(TotalCustomersData),
+		count: 0,
+		pageSize: 10,
+		TotalPages: getTotalPages(TotalCustomersData.length, 10)
+	});
+
 	const contextValue = {
 		date: date,
 		toggleDatePicker: toggleDatePicker,
@@ -131,17 +249,22 @@ const App = props => {
 		dateState: dateState,
 		handleDayClick: handleDayClick,
 		handleResetClick: handleResetClick,
-		handleCustomDate: handleCustomDate
+		handleCustomDate: handleCustomDate,
+		adminUserData: adminUserData,
+		customersData: customersData,
+		handleRightPagination: handleRightPagination,
+		handleLeftPagination: handleLeftPagination
 	};
 
 	return (
 		<DataContext.Provider value={contextValue}>
-			<Layout>
-				<Route path="/" exact component={Dashboard} />
-				<Route path="/dashboard" component={Dashboard} />
-				<Route exact path="/reporting/portal-report" component={PortalReport} />
-				<Route exact path="/user-management/admin-users" component={AdminUsers} />
-			</Layout>
+			{/* <Layout>
+				<Route path={baseUrl + '/'} exact component={Dashboard} />
+				<Route path={baseUrl + '/dashboard'} component={Dashboard} />
+				<Route exact path={baseUrl + '/reporting/portal-report'} component={PortalReport} />
+				<Route exact path={baseUrl + '/user-management/admin-users'} component={AdminUsers} />
+			</Layout> */}
+			<Login />
 		</DataContext.Provider>
 	);
 };

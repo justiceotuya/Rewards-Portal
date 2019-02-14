@@ -3,6 +3,8 @@ import styles from './Sidebar.module.scss';
 import copyrightImage from '../../assets/logo-red.png';
 import { NavList, NavItem, NavSecondaryItems, NavItemWithChildren } from './SidebarItem/SidebarItem';
 
+
+
 export default function Sidebar() {
 	return (
 		<nav className={styles.nav}>

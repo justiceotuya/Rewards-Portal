@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PageHeader from './PageHeader';
+import DateRangePicker from './DateRangePicker';
 
-it('renders without crashing', () => {
+it('e render and e no crash', () => {
 	const div = document.createElement('div');
-	ReactDOM.render(<PageHeader />, div);
+	ReactDOM.render(<DateRangePicker />, div);
 	ReactDOM.unmountComponentAtNode(div);
 });
