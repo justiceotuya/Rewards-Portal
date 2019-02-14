@@ -1,27 +1,35 @@
 self.__precacheManifest = [
   {
-    "revision": "8bc186431635aa83cba8",
-    "url": "/Rewards-Portal/static/css/main.23de1323.chunk.css"
+    "revision": "77c4d3071d5c8bbfd4b5",
+    "url": "/Rewards-Portal/static/css/main.9da928d9.chunk.css"
   },
   {
-    "revision": "8bc186431635aa83cba8",
-    "url": "/Rewards-Portal/static/js/main.8bc18643.chunk.js"
+    "revision": "77c4d3071d5c8bbfd4b5",
+    "url": "/Rewards-Portal/static/js/main.77c4d307.chunk.js"
   },
   {
     "revision": "bcda0159a245f6c83f41",
     "url": "/Rewards-Portal/static/js/runtime~main.bcda0159.js"
   },
   {
-    "revision": "bbd462de282325e84a4d",
+    "revision": "0f1e68e876ee3e2591b0",
     "url": "/Rewards-Portal/static/css/2.489ae067.chunk.css"
   },
   {
-    "revision": "bbd462de282325e84a4d",
-    "url": "/Rewards-Portal/static/js/2.bbd462de.chunk.js"
+    "revision": "0f1e68e876ee3e2591b0",
+    "url": "/Rewards-Portal/static/js/2.0f1e68e8.chunk.js"
+  },
+  {
+    "revision": "1a1441f4b3ef4697e263bee0215237f1",
+    "url": "/Rewards-Portal/static/media/bg.1a1441f4.jpg"
   },
   {
     "revision": "0576f0102b99e4fe5cbb768cae820c29",
     "url": "/Rewards-Portal/static/media/user-3.0576f010.jpg"
+  },
+  {
+    "revision": "5a4227edd6f5f103b8334ce9309b3d0c",
+    "url": "/Rewards-Portal/static/media/logo.5a4227ed.png"
   },
   {
     "revision": "6b3d4fd5f550175f47242f23aa4b581a",
@@ -44,7 +52,7 @@ self.__precacheManifest = [
     "url": "/Rewards-Portal/static/media/CircularStd-Medium.e47ea4c0.woff"
   },
   {
-    "revision": "75399e19f8b5644ed54637d0f71d9b15",
+    "revision": "81eff8ef140695cdd38a8d5dcb5259ee",
     "url": "/Rewards-Portal/index.html"
   }
 ];
