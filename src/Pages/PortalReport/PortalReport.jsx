@@ -6,7 +6,7 @@ import Modal from '../../components/Modal/Modal';
 import { DataContext } from '../../App';
 import style from './PortalReport.module.scss';
 import Table from '../../components/Table/Table';
-import { TableHeaderList, TableHeader, TableRow, TableData } from '../../components/Table/Table';
+import { TableHeaderList, TableHeader, TableRow, TableData } from '../../components/Table/TableComponents';
 
 const PortalReportTableHeaderList = () => {
 	return (

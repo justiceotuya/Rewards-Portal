@@ -261,7 +261,7 @@ const App = props => {
 
 	//create a hook for device group
 	const [deviceGroup, setDeviceGroup] = useState(getDeviceSize());
-	const [toggleSideBar, setToggleSideBar] = useState(deviceGroup ==='desktop' ? false : true);
+	const [toggleSideBar, setToggleSideBar] = useState(deviceGroup === 'desktop' ? false : true);
 	const handleHamburgerClick = () => {
 		//check the width of the browser
 		setDeviceGroup(getDeviceSize());
@@ -295,39 +295,11 @@ const App = props => {
 		deviceGroup: deviceGroup
 	};
 
-	////////handle login
-	// set login and authentication
-	const [userName, setUserName] = useState(null);
-	const [password, setPassword] = useState(null);
-	const [isAuthenticated, setAuthentication] = useState(false);
-
-	// handle login on submit
-	const handleLogin = e => {
-		e.preventDefault();
-
-		if (localStorage.getItem('username') == 'admin' && localStorage.getItem('password') == 'admin') {
-			// window.location.href = '/dashboard';
-			setAuthentication(true);
-		} else {
-			alert('please use "admin" as username and password to login');
-		}
-	};
-
-	//handle username
-	const handleUsernameChange = e => {
-		setUserName(e.target.value);
-		localStorage.setItem('username', e.target.value);
-	};
-
-	//handle password
-	const handlePasswordChange = e => {
-		setPassword(e.target.value);
-		localStorage.setItem('password', e.target.value);
-	};
-
 	//check if user is authenticated before alowing user to log in
 	// return isAuthenticated ? (
-	return (
+	return window.location.href.includes('login') ? (
+		<Login />
+	) : (
 		<DataContext.Provider value={contextValue}>
 			<Layout>
 				<Route path={baseUrl + '/'} exact component={Dashboard} />
