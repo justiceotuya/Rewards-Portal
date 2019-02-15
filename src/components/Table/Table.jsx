@@ -28,7 +28,20 @@ export default function Table(props) {
 		tableFooter__download,
 		disabled
 	} = styles;
-	const { TableHeaderList, TableBodyList, TotalData, TotalPages, buttonDisabled, data } = props;
+	const {
+		TableHeaderList,
+		TableBodyList,
+		TotalData,
+		TotalPages,
+		buttonDisabledIncrement,
+		buttonDisabledDecrement,
+		data,
+		SmallestItemNumber,
+		LargestItemNumber,
+		TotalDataLength,
+		CurrentPage
+	} = props;
+	let className;
 	return (
 		<DataContext.Consumer>
 			{/* <React.Fragment> */}
@@ -45,19 +58,27 @@ export default function Table(props) {
 					</div>
 					<div className={tableFooter}>
 						<div className={tableFooter__usercount}>
-							Displaying Users 1-{TotalPages} of {TotalData} in total
+							Displaying Users {SmallestItemNumber}-{LargestItemNumber} of {TotalDataLength} in total
 						</div>
 
 						<div className={pagination}>
-							<button className={pagination__left} onClick={context.handleLeftPagination} disabled={buttonDisabled}>
+							<button
+								className={buttonDisabledDecrement ? `${pagination__left} ${disabled}` : pagination__left}
+								onClick={context.handleLeftPagination}
+								// disabled={buttonDisabled}
+							>
 								{' '}
 								&#x25C2;{' '}
 							</button>
-							<div className={pagination__number}> Page 2 of 3 </div>
+							<div className={pagination__number}>
+								{' '}
+								Page {CurrentPage} of {TotalPages}{' '}
+							</div>
+
 							<button
-								className={disabled ? { pagination__right } : { disabled }}
+								className={buttonDisabledIncrement ? `${pagination__right} ${disabled}` : pagination__right}
 								onClick={context.handleRightPagination}
-								disabled={buttonDisabled}
+								// disabled={buttonDisabled}
 							>
 								{' '}
 								&#x25B8;

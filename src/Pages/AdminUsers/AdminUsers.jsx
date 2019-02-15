@@ -83,8 +83,15 @@ export default function AdminUsers(props) {
 					<Table
 						TableBodyList={<AdminUsersTableBodyList />}
 						TableHeaderList={<AdminUsersTableHeaderList />}
-						TotalData={context.adminUserData.adminUserData.length}
+						// TotalData={context.adminUserData.adminUserData.length}
 						TotalPages={context.adminUserData.TotalPages}
+						buttonDisabledIncrement={context.adminUserData.disabledIncrement}
+						buttonDisabledDecrement={context.adminUserData.disabledDecrement}
+						SmallestItemNumber={context.adminUserData.adminUserData[0].id}
+						LargestItemNumber={context.adminUserData.adminUserData[context.adminUserData.adminUserData.length - 1].id}
+						TotalDataLength={context.adminUserData.TotalAdminUserData.length}
+						CurrentPage={context.adminUserData.currentPage}
+						// totalPages={context.adminUserData.totalPage}
 					/>
 
 					{/* create modal to display date picker */}

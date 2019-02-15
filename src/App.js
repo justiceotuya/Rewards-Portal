@@ -123,16 +123,16 @@ const App = props => {
 
 	// let test = [];
 	// let count = 10;
-	// let pageSize = count + 10;
-	// for (var i = count; i < pageSize; i++) {
+	// let itemsPerPage = count + 10;
+	// for (var i = count; i < itemsPerPage; i++) {
 	// 	test.push(data[i]);
 	// 	count = i;
 	// }
 	const getInitialPaginationData = data => {
 		let newData = [];
 		let count = 0;
-		let pageSize = count + 10;
-		for (var i = count; i < pageSize; i++) {
+		let itemsPerPage = count + 10;
+		for (var i = count; i < itemsPerPage; i++) {
 			newData.push(data[i]);
 			count = i;
 		}
@@ -140,41 +140,61 @@ const App = props => {
 		return newData;
 	};
 
-	// const handleRightPagination = () => {
-	// 	let newData = [];
-	// 	let count = adminUserData.count;
-	// 	let pageSize = count + 10;
-	// 	for (var i = count; i < pageSize; i++) {
-	// 		newData.push(TotalAdminUserData[i]);
-	// 		count = i + 1;
-	// 	}
-	// 	setAdminUserData({
-	// 		count: count,
-	// 		adminUserData: newData
-	// 	});
-	// };
-	const handleRightPagination = data => {
-		console.log(this);
-		// let newData = [];
-		// let count = adminUserData.count;
-		// let pageSize = count + 10;
-		// for (var i = count; i < pageSize; i++) {
-		// 	newData.push(TotalAdminUserData[i]);
-		// 	count = i + 1;
-		// }
-		// setAdminUserData({
-		// 	count: count,
-		// 	adminUserData: newData
-		// });
-		// console.log(count);
+	// get Total Pages
+	const getTotalPages = (dataSize, itemsPerPage) => {
+		return Math.ceil(dataSize / itemsPerPage);
 	};
+	//create hook to get and set admin user data;
+	const [adminUserData, setAdminUserData] = useState({
+		TotalAdminUserData: TotalAdminUserData,
+		adminUserData: getInitialPaginationData(TotalAdminUserData),
+		count: 10,
+		itemsPerPage: 10,
+		TotalPages: getTotalPages(TotalAdminUserData.length, 10),
+		disabledIncrement: false,
+		disabledDecrement: true,
+		currentPage: 1
+	});
+
+	const handleRightPagination = () => {
+		let newData = [];
+		let count = adminUserData.count;
+		let itemsPerPage = adminUserData.itemsPerPage;
+		itemsPerPage = count + 10;
+		for (var i = count; i < itemsPerPage; i++) {
+			newData.push(TotalAdminUserData[i]);
+			count = i + 1;
+		}
+		setAdminUserData({
+			count: count,
+			adminUserData: newData,
+			TotalAdminUserData,
+			disabledIncrement: count === TotalAdminUserData.length ? true : false,
+			disabledDecrement:false,
+			itemsPerPage,
+			TotalPages: adminUserData.TotalPages,
+			currentPage: count / adminUserData.TotalPages
+		});
+	};
+	// console.log('count', count);
+	// console.log('newData', newData);
+	console.log('TotalAdminUserData', TotalAdminUserData.length);
+	console.log('admindata', adminUserData);
 
 	const handleLeftPagination = () => {
-		alert('handleLeftPagination clicked');
-	};
-	// get Total Pages
-	const getTotalPages = (dataSize, pageSize) => {
-		return Math.ceil(dataSize / pageSize);
+		if (adminUserData.currentPage === 1) {
+			setAdminUserData({
+				disabledDecrement: true
+			});
+		} else {
+			setAdminUserData({
+				disabledDecrement: false
+			});
+		}
+		// let fullData = TotalAdminUserData;
+		// let currentData = adminUserData;
+
+		// console.log(adminUserData);
 	};
 
 	const getIncrementalPaginationData = data => {
@@ -182,60 +202,51 @@ const App = props => {
 		// let count =
 	};
 
-	//create hook to get and set admin user data;
-	const [adminUserData, setAdminUserData] = useState({
-		totalAdminUserData: TotalAdminUserData,
-		adminUserData: next(0, 9, TotalAdminUserData),
-		count: 10,
-		currentPage: 0,
-		test: handleRightPagination(TotalAdminUserData),
-		pageSize: pageSize(10, TotalAdminUserData),
-		disabled: false,
-		TotalPages: getTotalPages(TotalAdminUserData.length, 10)
-	});
-
-	function pageSize(page, list) {
-		return Math.floor(list.length / page);
-	}
-
-	function next(page, size, list) {
-		var start = page * size;
-		var end = start + size;
-		return sublist(start, end, list);
-	}
-
-	//start is the start index from the original list
-	//end is the stop index from the original list
-	//list the original list to pull sub list
-	function sublist(start, end, list) {
-		var tmp = [];
-		if (list === null || list.length === 0) {
-			return tmp;
-		} else {
-			for (var i = 0; i < list.length; i++) {
-				if (i >= start && i <= end) {
-					tmp.push(list[i]);
-				}
-			}
-			return tmp;
-		}
-	}
-
-	console.log(adminUserData);
-
-	console.log('tester', next(0, 10, TotalCustomersData));
-
-	//pages to show
-	console.log('pageSize', pageSize(10, TotalCustomersData));
-
 	//create hook to get and set customers user data;
 	const [customersData, setCustomersData] = useState({
 		totalCustomersData: TotalCustomersData,
 		customersData: getInitialPaginationData(TotalCustomersData),
 		count: 0,
-		pageSize: 10,
-		TotalPages: getTotalPages(TotalCustomersData.length, 10)
+		itemsPerPage: 10,
+		TotalPages: getTotalPages(TotalCustomersData.length, 10),
+		disabledIncrement: false,
+		disabledDecrement: true
 	});
+
+	console.log(getInitialPaginationData(TotalAdminUserData));
+	// function itemsPerPage(page, list) {
+	// 	return Math.floor(list.length / page);
+	// }
+
+	// function next(page, size, list) {
+	// 	var start = page * size;
+	// 	var end = start + size;
+	// 	return sublist(start, end, list);
+	// }
+
+	//start is the start index from the original list
+	//end is the stop index from the original list
+	//list the original list to pull sub list
+	// function sublist(start, end, list) {
+	// 	var tmp = [];
+	// 	if (list === null || list.length === 0) {
+	// 		return tmp;
+	// 	} else {
+	// 		for (var i = 0; i < list.length; i++) {
+	// 			if (i >= start && i <= end) {
+	// 				tmp.push(list[i]);
+	// 			}
+	// 		}
+	// 		return tmp;
+	// 	}
+	// }
+
+	// console.log(adminUserData);
+
+	// console.log('tester', next(0, 10, TotalCustomersData));
+
+	// //pages to show
+	// console.log('itemsPerPage', itemsPerPage(10, TotalCustomersData));
 
 	const contextValue = {
 		date: date,
@@ -253,7 +264,8 @@ const App = props => {
 		adminUserData: adminUserData,
 		customersData: customersData,
 		handleRightPagination: handleRightPagination,
-		handleLeftPagination: handleLeftPagination
+		handleLeftPagination: handleLeftPagination,
+		disabled: adminUserData.disabled
 	};
 
 	////////handle login
@@ -265,7 +277,8 @@ const App = props => {
 	// handle login on submit
 	const handleLogin = e => {
 		e.preventDefault();
-		if (userName === 'admin' && password === 'admin') {
+
+		if (localStorage.getItem('username') == 'admin' && localStorage.getItem('password') == 'admin') {
 			// window.location.href = '/dashboard';
 			setAuthentication(true);
 		} else {
@@ -276,15 +289,18 @@ const App = props => {
 	//handle username
 	const handleUsernameChange = e => {
 		setUserName(e.target.value);
+		localStorage.setItem('username', e.target.value);
 	};
 
 	//handle password
 	const handlePasswordChange = e => {
 		setPassword(e.target.value);
+		localStorage.setItem('password', e.target.value);
 	};
 
 	//check if user is authenticated before alowing user to log in
-	return isAuthenticated ? (
+	// return isAuthenticated ? (
+	return (
 		<DataContext.Provider value={contextValue}>
 			<Layout>
 				<Route path={baseUrl + '/'} exact component={Dashboard} />
@@ -293,13 +309,14 @@ const App = props => {
 				<Route exact path={baseUrl + '/user-management/admin-users'} component={AdminUsers} />
 			</Layout>
 		</DataContext.Provider>
-	) : (
-		<Login
-			handleLogin={handleLogin}
-			handleUsernameChange={handleUsernameChange}
-			handlePasswordChange={handlePasswordChange}
-		/>
 	);
+	// ) : (
+	// 	<Login
+	// 		handleLogin={handleLogin}
+	// 		handleUsernameChange={handleUsernameChange}
+	// 		handlePasswordChange={handlePasswordChange}
+	// 	/>
+	// );
 };
 
 export default App;

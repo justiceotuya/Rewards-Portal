@@ -68,11 +68,13 @@ export default function PortalReport(props) {
 					/>
 
 					{/* import table */}
+					{console.log('context', context.customersData)}
 					<Table
 						TableBodyList={<PortalReportTableBodyList />}
 						TableHeaderList={<PortalReportTableHeaderList />}
 						TotalData={context.customersData.customersData.length}
 						TotalPages={context.customersData.TotalPages}
+						buttonDisabled={context.customersData.disabled}
 					/>
 
 					{/* create modal to display date picker */}

@@ -67,12 +67,6 @@
 			box-shadow: 0 0.6px 0.1px 0 rgba(0, 0, 0, 0.24), 0 0 0.6px 0 #8bc34a;
 		}
 
-		.disabled {
-			border: 1px solid #999999 important;
-			background-color: #cccccc important;
-			color: #666666 important;
-		}
-
 		&__left {
 			margin-right: 2rem;
 		}
@@ -102,3 +96,9 @@
 // 	background-color: #cccccc important;
 // 	color: #666666 important;
 // }
+.disabled {
+	background-color: #cccccc !important;
+	outline: none !important;
+	cursor: not-allowed !important;
+	pointer-events: none;
+}
