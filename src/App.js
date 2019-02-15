@@ -303,7 +303,7 @@ const App = props => {
 		<DataContext.Provider value={contextValue}>
 			<Layout>
 				<Route path={baseUrl + '/'} exact component={Dashboard} />
-				<Route path={baseUrl + '/dashboard'} component={Dashboard} />
+				<Route path={baseUrl + '/dashboard'} exact component={Dashboard} />
 				<Route exact path={baseUrl + '/reporting/portal-report'} component={PortalReport} />
 				<Route exact path={baseUrl + '/user-management/admin-users'} component={AdminUsers} />
 			</Layout>
