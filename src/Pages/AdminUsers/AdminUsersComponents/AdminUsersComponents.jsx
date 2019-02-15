@@ -36,8 +36,8 @@ export const AdminUsersTableBodyList = () => {
 			{/* <React.Fragment> */}
 			{context => (
 				<React.Fragment>
-					{adminUserData !== null ? (
-						adminUserData.map(item => {
+					{context.adminUserData.adminUserData !== null ? (
+						context.adminUserData.adminUserData.map(item => {
 							const { id, role, current_sign_in, last_sign_in, status, email } = item;
 							return (
 								<TableRow key={id}>
