@@ -5,3 +5,12 @@
 	width: 100%;
 	padding: 3rem 8rem;
 }
+
+@media (max-width: 1023px) {
+	.section {
+		padding: 8rem 2rem 2rem 2rem;
+	}
+	.main {
+		display: flex;
+	}
+}

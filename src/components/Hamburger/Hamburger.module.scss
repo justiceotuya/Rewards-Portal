@@ -1,14 +1,24 @@
 .hamburger {
-	& {
+	position: absolute;
+	top: 1rem;
+	left: 2rem;
+	padding: 1.5rem;
+	transition: all 0.3s;
+
+	&:active &__item {
+		padding: 1rem;
+	}
+
+	&__item {
 		position: absolute;
+		background-color: #2f2d2e;
 		width: 2.5rem;
 		height: 3px;
-		background-color: #2f2d2e;
-		top: 3rem;
-		left: 2rem;
+		top: 1.4rem;
+		left: 0.3rem;
 	}
-	&::before,
-	&::after {
+	&__item::before,
+	&__item::after {
 		content: '';
 		position: absolute;
 		width: 100%;
@@ -16,17 +26,26 @@
 		background-color: inherit;
 	}
 
-	&::before {
-		top: 0.5rem;
+	&__item::before {
+		top: 0.7rem;
 		width: 50%;
 	}
 
-	&::after {
-		bottom: 0.5rem;
+	&__item::after {
+		bottom: 0.7rem;
 		width: 80%;
 	}
 
 	@media (min-width: 1024px) {
 		display: none;
+	}
+}
+@media (max-width: 768px) {
+	.hamburger {
+		position: fixed;
+		top: 1rem;
+		left: 2rem;
+		padding: 1.5rem;
+		z-index: 42;
 	}
 }

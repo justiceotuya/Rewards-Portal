@@ -43,3 +43,13 @@
 		left: 19rem;
 	}
 }
+
+@media (max-width: 768px) {
+	.nav {
+		&__list {
+			margin-left: 2rem;
+			padding: 5.9rem 0;
+			padding: 2rem 3rem 0;
+		}
+	}
+}

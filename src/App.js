@@ -170,7 +170,7 @@ const App = props => {
 			adminUserData: newData,
 			TotalAdminUserData,
 			disabledIncrement: count === TotalAdminUserData.length ? true : false,
-			disabledDecrement:false,
+			disabledDecrement: false,
 			itemsPerPage,
 			TotalPages: adminUserData.TotalPages,
 			currentPage: count / adminUserData.TotalPages
@@ -248,6 +248,30 @@ const App = props => {
 	// //pages to show
 	// console.log('itemsPerPage', itemsPerPage(10, TotalCustomersData));
 
+	//get the device size
+	const getDeviceSize = () => {
+		if (window.innerWidth <= 767) {
+			return 'mobile';
+		} else if (window.innerWidth >= 768 && window.innerWidth <= 1023) {
+			return 'tablet';
+		} else {
+			return 'desktop';
+		}
+	};
+
+	//create a hook for device group
+	const [deviceGroup, setDeviceGroup] = useState(getDeviceSize());
+	const [toggleSideBar, setToggleSideBar] = useState(deviceGroup ==='desktop' ? false : true);
+	const handleHamburgerClick = () => {
+		//check the width of the browser
+		setDeviceGroup(getDeviceSize());
+		//togle the sidebar
+		deviceGroup === 'mobile' || deviceGroup === 'tablet'
+			? setToggleSideBar(!toggleSideBar)
+			: setToggleSideBar(toggleSideBar);
+		console.log('toggleSideBar', toggleSideBar);
+	};
+
 	const contextValue = {
 		date: date,
 		toggleDatePicker: toggleDatePicker,
@@ -265,7 +289,10 @@ const App = props => {
 		customersData: customersData,
 		handleRightPagination: handleRightPagination,
 		handleLeftPagination: handleLeftPagination,
-		disabled: adminUserData.disabled
+		disabled: adminUserData.disabled,
+		handleHamburgerClick: handleHamburgerClick,
+		toggleSideBar: toggleSideBar,
+		deviceGroup: deviceGroup
 	};
 
 	////////handle login

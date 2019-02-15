@@ -31,9 +31,14 @@ export default function PageHeader(props) {
 			</div>
 
 			<div className={styles.pageSearch}>
+				{/* create button based on value */}
+				{props.value !== undefined ? <Button value={props.value} buttonClassName={props.buttonClassName} /> : null}
+
 				<form className={styles.pageSearch__form}>
-					<input type="search" name="search" className={styles.search} placeholder="Search" />
-					<i className={`fas fa-search ${styles.icon}`} />
+					<div className={styles.search__box}>
+						<input type="search" name="search" className={styles.search} placeholder="Search" />
+						<i className={`fas fa-search ${styles.icon}`} />
+					</div>
 				</form>
 			</div>
 		</div>

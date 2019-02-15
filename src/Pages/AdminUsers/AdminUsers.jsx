@@ -48,8 +48,11 @@ const AdminUsersTableBodyList = () => {
 									<TableData item={role} />
 									<TableData item={current_sign_in} />
 									<TableData item={last_sign_in} />
-									<TableData item={status} />
-									<TableData item="" />
+									<TableData item={status}>
+										<div className={status === 'Active' ? `${style.active}` : `${style.inactive}`} />
+										<span className={style.more}>...</span>
+									</TableData>
+									{/* <TableData item="..." /> */}
 								</TableRow>
 							);
 						})
@@ -77,6 +80,8 @@ export default function AdminUsers(props) {
 						activeIndex={context.activeIndex}
 						handleClick={context.handleClick}
 						Day={context.Day}
+						value="New Admin User"
+						buttonClassName={style.Button}
 					/>
 
 					{/* import table */}

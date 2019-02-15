@@ -11,7 +11,12 @@ export const TableRow = props => {
 	return <tr className={styles.tableRow}>{props.children}</tr>;
 };
 export const TableData = props => {
-	return <td className={styles.tableData}>{props.item}</td>;
+	return (
+		<td className={styles.tableData}>
+			{props.children}
+			{props.item}
+		</td>
+	);
 };
 
 export default function Table(props) {

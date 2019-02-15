@@ -43,3 +43,12 @@
 		padding: 2rem 5rem 2rem 3rem;
 	}
 }
+
+@media (max-width: 768px) {
+	.header {
+		position: fixed;
+		z-index: 22;
+		width: 100%;
+		background: #ffffff;
+	}
+}
