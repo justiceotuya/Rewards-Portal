@@ -1,8 +1,8 @@
-import React, {  useState  } from 'react';
+import React, { useState } from 'react';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import moment from 'moment';
 import { DateUtils } from 'react-day-picker';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import PortalReport from './Pages/PortalReport/PortalReport';
 import AdminUsers from './Pages/AdminUsers/AdminUsers';
@@ -12,7 +12,6 @@ import Login from './Pages/Login/Login';
 
 //create baseurl
 const baseUrl = process.env.PUBLIC_URL;
-
 //create context to share data
 export const DataContext = React.createContext();
 
@@ -304,11 +303,13 @@ const App = props => {
 	) : (
 		<DataContext.Provider value={contextValue}>
 			<Layout>
+				{console.log('baseUrl', baseUrl)}
 				<Switch>
-					<Route path={baseUrl + '/'} exact component={Dashboard} />
+					{/* <Route path={baseUrl + '/#/'} exact component={Dashboard} /> */}
 					<Route path={baseUrl + '/dashboard'} component={Dashboard} />
 					<Route exact path={baseUrl + '/reporting/portal-report'} component={PortalReport} />
 					<Route exact path={baseUrl + '/user-management/admin-users'} component={AdminUsers} />
+					<Redirect from={`${baseUrl}`} to={`${baseUrl + '/dashboard'}`} />
 				</Switch>
 			</Layout>
 		</DataContext.Provider>

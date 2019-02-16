@@ -10,7 +10,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 const customHistory = createBrowserHistory();
 
 ReactDOM.render(
-	<HashRouter history={customHistory}>
+	<HashRouter>
 		<App />
 	</HashRouter>,
 	document.getElementById('root')

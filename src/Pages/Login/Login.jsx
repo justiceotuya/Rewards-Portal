@@ -29,7 +29,7 @@ export default function Login(props) {
 		e.preventDefault();
 
 		if (localStorage.getItem('username') == 'admin' && localStorage.getItem('password') == 'admin') {
-			window.location.href = '/dashboard';
+			window.location.href = '#/dashboard';
 			// setAuthentication(true);
 		} else {
 			alert('please use "admin" as username and password to login');
