@@ -143,6 +143,7 @@
 	}
 	.date {
 		top: 9rem;
+		z-index: 4;
 	}
 	.pageSearch__form {
 		text-align: center;
@@ -180,5 +181,6 @@
 	.date {
 		top: 14rem;
 		width: 70%;
+		z-index: 4;
 	}
 }

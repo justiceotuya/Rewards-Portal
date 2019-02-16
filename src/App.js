@@ -144,8 +144,15 @@ const App = props => {
 	const getTotalPages = (dataSize, itemsPerPage) => {
 		return Math.ceil(dataSize / itemsPerPage);
 	};
+
+	//mergestate hook
+	function useMergeState(initialState) {
+		const [state, setState] = useState(initialState);
+		const setMergedState = newState => setState(prevState => Object.assign({}, prevState, newState));
+		return [state, setMergedState];
+	}
 	//create hook to get and set admin user data;
-	const [adminUserData, setAdminUserData] = useState({
+	const [adminUserData, setAdminUserData] = useMergeState({
 		TotalAdminUserData: TotalAdminUserData,
 		adminUserData: getInitialPaginationData(TotalAdminUserData),
 		count: 10,
@@ -168,33 +175,40 @@ const App = props => {
 		setAdminUserData({
 			count: count,
 			adminUserData: newData,
-			TotalAdminUserData,
 			disabledIncrement: count === TotalAdminUserData.length ? true : false,
-			disabledDecrement: false,
-			itemsPerPage,
-			TotalPages: adminUserData.TotalPages,
+			// disabledDecrement: false,
+			disabledDecrement: count === TotalAdminUserData.length ? true : false,
 			currentPage: count / adminUserData.TotalPages
 		});
 	};
-	// console.log('count', count);
-	// console.log('newData', newData);
-	console.log('TotalAdminUserData', TotalAdminUserData.length);
-	console.log('admindata', adminUserData);
 
 	const handleLeftPagination = () => {
-		if (adminUserData.currentPage === 1) {
-			setAdminUserData({
-				disabledDecrement: true
-			});
-		} else {
-			setAdminUserData({
-				disabledDecrement: false
-			});
-		}
+		//get the begining of the current array beign displayed
+		let beginningOfNewArray = adminUserData.adminUserData[0].id;
+
+		//so that we should not touch the object while slicing, we have to clone import PropTypes from 'prop-types';
+		//this is a deep object copy
+		let cloneAdminUserData = JSON.parse(JSON.stringify(adminUserData));
+
+		// to splice it, get the negative position of the begining of the new arry and minus the page size from it to get the starting point and then provide the legnth of values you want
+
+		let newArray = cloneAdminUserData.TotalAdminUserData.splice(
+			beginningOfNewArray - cloneAdminUserData.length - cloneAdminUserData.itemsPerPage,
+			cloneAdminUserData.itemsPerPage
+		);
+
+		console.log('adminUserData', adminUserData);
+		console.log('cloneAdminUserData', cloneAdminUserData);
+		setAdminUserData({
+			adminUserData: newArray,
+			// TotalAdminUserData: adminUserData.TotalAdminUserData,
+			count: adminUserData.count - 10,
+			disabledDecrement: adminUserData.itemsPerPage === adminUserData.count ? true : false,
+			currentPage: adminUserData.count / adminUserData.TotalPages
+		});
+
 		// let fullData = TotalAdminUserData;
 		// let currentData = adminUserData;
-
-		// console.log(adminUserData);
 	};
 
 	const getIncrementalPaginationData = data => {
@@ -208,12 +222,11 @@ const App = props => {
 		customersData: getInitialPaginationData(TotalCustomersData),
 		count: 0,
 		itemsPerPage: 10,
-		TotalPages: getTotalPages(TotalCustomersData.length, 10),
-		disabledIncrement: false,
-		disabledDecrement: true
+		TotalPages: getTotalPages(TotalCustomersData.length, 10)
+		// disabledIncrement: false,
+		// disabledDecrement: true
 	});
 
-	console.log(getInitialPaginationData(TotalAdminUserData));
 	// function itemsPerPage(page, list) {
 	// 	return Math.floor(list.length / page);
 	// }
@@ -272,6 +285,8 @@ const App = props => {
 		console.log('toggleSideBar', toggleSideBar);
 	};
 
+	console.log('admindata', adminUserData);
+
 	const contextValue = {
 		date: date,
 		toggleDatePicker: toggleDatePicker,
@@ -302,10 +317,11 @@ const App = props => {
 	) : (
 		<DataContext.Provider value={contextValue}>
 			<Layout>
-				<Route path={baseUrl + '/'} exact component={Dashboard} />
-				<Route path={baseUrl + '/dashboard'} exact component={Dashboard} />
-				<Route exact path={baseUrl + '/reporting/portal-report'} component={PortalReport} />
-				<Route exact path={baseUrl + '/user-management/admin-users'} component={AdminUsers} />
+				<Route path="/" exact component={Dashboard} />
+				<Route path="/dashboard" exact component={Dashboard} />
+				<Route exact path="/reporting/portal-report" component={PortalReport} />
+				<Route exact path="/user-management/admin-users" component={AdminUsers} />
+				
 			</Layout>
 		</DataContext.Provider>
 	);

@@ -92,14 +92,25 @@
 	}
 }
 
-// button:disabled {
-// 	border: 1px solid #999999 important;
-// 	background-color: #cccccc important;
-// 	color: #666666 important;
-// }
 .disabled {
 	background-color: #cccccc !important;
 	outline: none !important;
 	cursor: not-allowed !important;
 	pointer-events: none;
+}
+
+@media (max-width: 425px) {
+	.tableFooter {
+		flex-direction: column;
+
+		& > * {
+			margin: 1rem 0;
+		}
+		.pagination {
+			&__left,
+			&__right {
+				padding: 1.5rem;
+			}
+		}
+	}
 }

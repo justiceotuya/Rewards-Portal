@@ -3,7 +3,6 @@ import styles from './Table.module.scss';
 // import data from '../../assets/Data/data.json';
 import { DataContext } from '../../App';
 
-
 export default function Table(props) {
 	const {
 		tableContainer,
@@ -37,7 +36,7 @@ export default function Table(props) {
 			{/* <React.Fragment> */}
 			{context => (
 				<React.Fragment>
-					{console.log('test')}
+					{console.log('test', context.adminUserData)}
 					<div className={tableContainer}>
 						<table className={table}>
 							<thead className={thead}>
