@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "12c9db7a86a053ef7351",
+    "revision": "339b0575355494567342",
     "url": "/Rewards-Portal/static/css/main.1ed113a1.chunk.css"
   },
   {
-    "revision": "12c9db7a86a053ef7351",
-    "url": "/Rewards-Portal/static/js/main.12c9db7a.chunk.js"
+    "revision": "339b0575355494567342",
+    "url": "/Rewards-Portal/static/js/main.339b0575.chunk.js"
   },
   {
     "revision": "bcda0159a245f6c83f41",
@@ -36,12 +36,12 @@ self.__precacheManifest = [
     "url": "/Rewards-Portal/static/media/icons.6b3d4fd5.woff"
   },
   {
-    "revision": "c47d7e581f2a563f8dedd4509c106fb8",
-    "url": "/Rewards-Portal/static/media/CircularStd-Book.c47d7e58.woff"
-  },
-  {
     "revision": "6f4fe3ca482221e7c0d8c1baa5f31100",
     "url": "/Rewards-Portal/static/media/CircularStd-Bold.6f4fe3ca.woff"
+  },
+  {
+    "revision": "c47d7e581f2a563f8dedd4509c106fb8",
+    "url": "/Rewards-Portal/static/media/CircularStd-Book.c47d7e58.woff"
   },
   {
     "revision": "b5fa1b553516d1cf8d03d6b4588058a0",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/Rewards-Portal/static/media/CircularStd-Medium.e47ea4c0.woff"
   },
   {
-    "revision": "a7c342f1dbc69edbefc8edf960193da1",
+    "revision": "53ec025ad87acf9fc2c4e8b6b46abbbe",
     "url": "/Rewards-Portal/index.html"
   }
 ];
