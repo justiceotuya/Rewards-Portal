@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "1e83f7238d8637433967",
+    "revision": "e33487e35d6a7aeee9d2",
     "url": "/Rewards-Portal/static/css/main.2bd07e05.chunk.css"
   },
   {
-    "revision": "1e83f7238d8637433967",
-    "url": "/Rewards-Portal/static/js/main.1e83f723.chunk.js"
+    "revision": "e33487e35d6a7aeee9d2",
+    "url": "/Rewards-Portal/static/js/main.e33487e3.chunk.js"
   },
   {
     "revision": "bcda0159a245f6c83f41",
@@ -36,6 +36,10 @@ self.__precacheManifest = [
     "url": "/Rewards-Portal/static/media/icons.6b3d4fd5.woff"
   },
   {
+    "revision": "c47d7e581f2a563f8dedd4509c106fb8",
+    "url": "/Rewards-Portal/static/media/CircularStd-Book.c47d7e58.woff"
+  },
+  {
     "revision": "6f4fe3ca482221e7c0d8c1baa5f31100",
     "url": "/Rewards-Portal/static/media/CircularStd-Bold.6f4fe3ca.woff"
   },
@@ -44,15 +48,11 @@ self.__precacheManifest = [
     "url": "/Rewards-Portal/static/media/CircularStd-Black.b5fa1b55.woff"
   },
   {
-    "revision": "c47d7e581f2a563f8dedd4509c106fb8",
-    "url": "/Rewards-Portal/static/media/CircularStd-Book.c47d7e58.woff"
-  },
-  {
     "revision": "e47ea4c0b9151fe6cbd8e2f332113559",
     "url": "/Rewards-Portal/static/media/CircularStd-Medium.e47ea4c0.woff"
   },
   {
-    "revision": "090d18fd763c38f0f5455f3005ccbb30",
+    "revision": "925623b279b0c789d5313656045cae8b",
     "url": "/Rewards-Portal/index.html"
   }
 ];
