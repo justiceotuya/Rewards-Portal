@@ -27,8 +27,8 @@ const PortalReportTableBodyList = () => {
 			{/* <React.Fragment> */}
 			{context => (
 				<React.Fragment>
-					{context.customersData.customersData !== null ? (
-						context.customersData.customersData.map(item => {
+					{context.customersData.displayedData !== null ? (
+						context.customersData.displayedData.map(item => {
 							const { id, first_name, last_name, email, phone, last_login_date } = item;
 							return (
 								<TableRow key={id}>
@@ -68,13 +68,18 @@ export default function PortalReport(props) {
 					/>
 
 					{/* import table */}
-					{console.log('context', context.customersData)}
 					<Table
 						TableBodyList={<PortalReportTableBodyList />}
 						TableHeaderList={<PortalReportTableHeaderList />}
-						TotalData={context.customersData.customersData.length}
 						TotalPages={context.customersData.TotalPages}
-						buttonDisabled={context.customersData.disabled}
+						buttonDisabledIncrement={context.customersData.disabledIncrement}
+						buttonDisabledDecrement={context.customersData.disabledDecrement}
+						SmallestItemNumber={context.customersData.displayedData[0].id}
+						LargestItemNumber={context.customersData.displayedData[context.customersData.displayedData.length - 1].id}
+						TotalDataLength={context.customersData.TotalData.length}
+						CurrentPage={context.customersData.currentPage}
+						handleLeftPagination={() => context.handleLeftPagination('customersData')}
+						handleRightPagination={() => context.handleRightPagination('customersData')}
 					/>
 
 					{/* create modal to display date picker */}

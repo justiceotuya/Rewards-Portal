@@ -10,7 +10,6 @@ import TotalAdminUserData from './assets/Data/adminData.json';
 import TotalCustomersData from './assets/Data/customersData.json';
 import Login from './Pages/Login/Login';
 export const DataContext = React.createContext();
-const baseUrl = process.env.PUBLIC_URL;
 const App = props => {
 	// create a context to pass data to all children
 	// const DataContext = React.createContext();
@@ -26,8 +25,6 @@ const App = props => {
 		return {
 			from: undefined,
 			to: undefined
-			// fromFormatted: moment(dateState.from.toLocaleDateString()).format('D MMM-YYYY'),
-			// toFormatted: moment(dateState.to.toLocaleDateString()).format('D MMM-YYYY')
 		};
 	};
 	//date state hook
@@ -107,10 +104,12 @@ const App = props => {
 		getInitialDateState(range);
 	};
 
+	//function to reset date
 	const handleResetClick = () => {
 		getInitialDateState(getInitialState());
 	};
 
+	//function to handle custom date
 	const handleCustomDate = () => {
 		toggleModal();
 		console.log('date state', dateState);
@@ -121,13 +120,7 @@ const App = props => {
 		);
 	};
 
-	// let test = [];
-	// let count = 10;
-	// let itemsPerPage = count + 10;
-	// for (var i = count; i < itemsPerPage; i++) {
-	// 	test.push(data[i]);
-	// 	count = i;
-	// }
+	//function to get the initial data to be displayed on the table
 	const getInitialPaginationData = data => {
 		let newData = [];
 		let count = 0;
@@ -136,7 +129,7 @@ const App = props => {
 			newData.push(data[i]);
 			count = i;
 		}
-
+		console.log(newData);
 		return newData;
 	};
 
@@ -151,10 +144,11 @@ const App = props => {
 		const setMergedState = newState => setState(prevState => Object.assign({}, prevState, newState));
 		return [state, setMergedState];
 	}
+
 	//create hook to get and set admin user data;
 	const [adminUserData, setAdminUserData] = useMergeState({
-		TotalAdminUserData: TotalAdminUserData,
-		adminUserData: getInitialPaginationData(TotalAdminUserData),
+		TotalData: TotalAdminUserData,
+		displayedData: getInitialPaginationData(TotalAdminUserData),
 		count: 10,
 		itemsPerPage: 10,
 		TotalPages: getTotalPages(TotalAdminUserData.length, 10),
@@ -163,103 +157,93 @@ const App = props => {
 		currentPage: 1
 	});
 
-	const handleRightPagination = () => {
-		let newData = [];
-		let count = adminUserData.count;
-		let itemsPerPage = adminUserData.itemsPerPage;
-		itemsPerPage = count + 10;
-		for (var i = count; i < itemsPerPage; i++) {
-			newData.push(TotalAdminUserData[i]);
-			count = i + 1;
-		}
-		setAdminUserData({
-			count: count,
-			adminUserData: newData,
-			disabledIncrement: count === TotalAdminUserData.length ? true : false,
-			// disabledDecrement: false,
-			disabledDecrement: count === TotalAdminUserData.length ? true : false,
-			currentPage: count / adminUserData.TotalPages
-		});
-	};
-
-	const handleLeftPagination = () => {
-		//get the begining of the current array beign displayed
-		let beginningOfNewArray = adminUserData.adminUserData[0].id;
-
-		//so that we should not touch the object while slicing, we have to clone import PropTypes from 'prop-types';
-		//this is a deep object copy
-		let cloneAdminUserData = JSON.parse(JSON.stringify(adminUserData));
-
-		// to splice it, get the negative position of the begining of the new arry and minus the page size from it to get the starting point and then provide the legnth of values you want
-
-		let newArray = cloneAdminUserData.TotalAdminUserData.splice(
-			beginningOfNewArray - cloneAdminUserData.length - cloneAdminUserData.itemsPerPage,
-			cloneAdminUserData.itemsPerPage
-		);
-
-		console.log('adminUserData', adminUserData);
-		console.log('cloneAdminUserData', cloneAdminUserData);
-		setAdminUserData({
-			adminUserData: newArray,
-			// TotalAdminUserData: adminUserData.TotalAdminUserData,
-			count: adminUserData.count - 10,
-			disabledDecrement: adminUserData.itemsPerPage === adminUserData.count ? true : false,
-			currentPage: adminUserData.count / adminUserData.TotalPages
-		});
-
-		// let fullData = TotalAdminUserData;
-		// let currentData = adminUserData;
-	};
-
-	const getIncrementalPaginationData = data => {
-		// let newData = [];
-		// let count =
-	};
-
 	//create hook to get and set customers user data;
-	const [customersData, setCustomersData] = useState({
-		totalCustomersData: TotalCustomersData,
-		customersData: getInitialPaginationData(TotalCustomersData),
-		count: 0,
+	const [customersData, setCustomersData] = useMergeState({
+		TotalData: TotalCustomersData,
+		displayedData: getInitialPaginationData(TotalCustomersData),
+		count: 10,
 		itemsPerPage: 10,
-		TotalPages: getTotalPages(TotalCustomersData.length, 10)
-		// disabledIncrement: false,
-		// disabledDecrement: true
+		TotalPages: getTotalPages(TotalCustomersData.length, 10),
+		disabledIncrement: false,
+		disabledDecrement: true,
+		currentPage: 1
 	});
 
-	// function itemsPerPage(page, list) {
-	// 	return Math.floor(list.length / page);
-	// }
+	const getIncrementPaginationData = data => {
+		let newData = [];
+		let count = data.count;
+		let temp = data.itemsPerPage;
+		let TotalData = data.TotalData;
+		let displayedData = data.displayedData;
+		temp = count + 10;
+		for (var i = count; i < temp; i++) {
+			newData.push(TotalData[i]);
+			count = i + 1;
+		}
 
-	// function next(page, size, list) {
-	// 	var start = page * size;
-	// 	var end = start + size;
-	// 	return sublist(start, end, list);
-	// }
+		let newObject = {
+			count: count,
+			disabledDecrement: count === displayedData.itemsPerPage ? true : false,
+			disabledIncrement: count === TotalData.length ? true : false,
+			currentPage: count / data.TotalPages
+		};
 
-	//start is the start index from the original list
-	//end is the stop index from the original list
-	//list the original list to pull sub list
-	// function sublist(start, end, list) {
-	// 	var tmp = [];
-	// 	if (list === null || list.length === 0) {
-	// 		return tmp;
-	// 	} else {
-	// 		for (var i = 0; i < list.length; i++) {
-	// 			if (i >= start && i <= end) {
-	// 				tmp.push(list[i]);
-	// 			}
-	// 		}
-	// 		return tmp;
-	// 	}
-	// }
+		Object.assign(data, newObject);
+		console.log('data', data);
+		return newData;
+	};
 
-	// console.log(adminUserData);
+	// function returns the new page items
+	const getDecrementPaginationData = data => {
+		//get the begining of the current array beign displayed
+		let beginningOfNewArray = data.displayedData[0].id;
 
-	// console.log('tester', next(0, 10, TotalCustomersData));
+		//filter array to get 10 items based on the id of the first item in the currently displayed items
+		let newArray = data.TotalData.filter(
+			item => item.id >= beginningOfNewArray - data.itemsPerPage && item.id < beginningOfNewArray
+		);
+		let count = data.count - 10;
+		let itemsPerPage = data.itemsPerPage;
+		itemsPerPage = data.count - 10;
 
-	// //pages to show
-	// console.log('itemsPerPage', itemsPerPage(10, TotalCustomersData));
+		// mutate the object by creating a new object
+		let myObj = {
+			count: count,
+			disabledDecrement: count === data.itemsPerPage ? true : false,
+			disabledIncrement: count === data.TotalData.length ? true : false,
+			currentPage: data.currentPage - 1
+		};
+
+		Object.assign(data, myObj);
+		return { newArray };
+	};
+
+	//handle pagination for increment
+	const handleRightPagination = dataSet => {
+		// run this function based on call back by  the individual functions
+		if (dataSet === 'adminUserData') {
+			setAdminUserData({
+				displayedData: getIncrementPaginationData(adminUserData)
+			});
+		} else if (dataSet === 'customersData') {
+			setCustomersData({
+				displayedData: getIncrementPaginationData(customersData)
+			});
+		}
+	};
+
+	//handle pagination for decrement
+	const handleLeftPagination = dataSet => {
+		if (dataSet === 'adminUserData') {
+			setAdminUserData({
+				displayedData: getDecrementPaginationData(adminUserData).newArray
+			});
+		} else if (dataSet === 'customersData') {
+			setCustomersData({
+				displayedData: getDecrementPaginationData(customersData).newArray
+			});
+		}
+	};
 
 	//get the device size
 	const getDeviceSize = () => {
@@ -274,7 +258,9 @@ const App = props => {
 
 	//create a hook for device group
 	const [deviceGroup, setDeviceGroup] = useState(getDeviceSize());
-	const [toggleSideBar, setToggleSideBar] = useState(deviceGroup === 'desktop' ? false : true);
+	const [toggleSideBar, setToggleSideBar] = useState(
+		deviceGroup === 'mobile' || deviceGroup === 'tablet' ? true : deviceGroup === 'desktop' ? false : null
+	);
 	const handleHamburgerClick = () => {
 		//check the width of the browser
 		setDeviceGroup(getDeviceSize());
@@ -284,8 +270,6 @@ const App = props => {
 			: setToggleSideBar(toggleSideBar);
 		console.log('toggleSideBar', toggleSideBar);
 	};
-
-	console.log('admindata', adminUserData);
 
 	const contextValue = {
 		date: date,
@@ -321,7 +305,6 @@ const App = props => {
 				<Route path="/dashboard" exact component={Dashboard} />
 				<Route exact path="/reporting/portal-report" component={PortalReport} />
 				<Route exact path="/user-management/admin-users" component={AdminUsers} />
-				
 			</Layout>
 		</DataContext.Provider>
 	);

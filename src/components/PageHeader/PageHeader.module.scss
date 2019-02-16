@@ -63,6 +63,7 @@
 	box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.15);
 	width: 196px;
 	height: 312px;
+		z-index: 4;
 
 	& ul {
 		padding: 2.1rem;
@@ -143,7 +144,6 @@
 	}
 	.date {
 		top: 9rem;
-		z-index: 4;
 	}
 	.pageSearch__form {
 		text-align: center;
@@ -181,6 +181,5 @@
 	.date {
 		top: 14rem;
 		width: 70%;
-		z-index: 4;
 	}
 }

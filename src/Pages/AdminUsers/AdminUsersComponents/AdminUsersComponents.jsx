@@ -4,7 +4,6 @@ import style from '../AdminUsers.module.scss';
 import { DataContext } from '../../../App';
 import adminUserData from '../../../assets/Data/adminData.json';
 
-console.log(adminUserData);
 export const AdminUsersTableHeaderList = () => {
 	return (
 		<React.Fragment>
@@ -19,25 +18,13 @@ export const AdminUsersTableHeaderList = () => {
 };
 
 export const AdminUsersTableBodyList = () => {
-	// function
-	// let test = [];
-	// let count=0;
-	// let pageSize= 10;
-	// for (var i = 0; i < pageSize; i++) {
-	// 	test.push(data[i]);
-	// 	count=i
-	// }
-
-	//next button push  new set of data from 'count' to count + pagesize
-
-	// prev button, decrement from count to count-page size (use shift or delete) if page size is not less than count
 	return (
 		<DataContext.Consumer>
 			{/* <React.Fragment> */}
 			{context => (
 				<React.Fragment>
-					{context.adminUserData.adminUserData !== null ? (
-						context.adminUserData.adminUserData.map(item => {
+					{context.adminUserData.displayedData !== null ? (
+						context.adminUserData.displayedData.map(item => {
 							const { id, role, current_sign_in, last_sign_in, status, email } = item;
 							return (
 								<TableRow key={id}>

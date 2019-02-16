@@ -28,7 +28,9 @@ export default function Table(props) {
 		SmallestItemNumber,
 		LargestItemNumber,
 		TotalDataLength,
-		CurrentPage
+		CurrentPage,
+		handleLeftPagination,
+		handleRightPagination
 	} = props;
 	let className;
 	return (
@@ -36,7 +38,6 @@ export default function Table(props) {
 			{/* <React.Fragment> */}
 			{context => (
 				<React.Fragment>
-					{console.log('test', context.adminUserData)}
 					<div className={tableContainer}>
 						<table className={table}>
 							<thead className={thead}>
@@ -53,7 +54,7 @@ export default function Table(props) {
 						<div className={pagination}>
 							<button
 								className={buttonDisabledDecrement ? `${pagination__left} ${disabled}` : pagination__left}
-								onClick={context.handleLeftPagination}
+								onClick={handleLeftPagination}
 								// disabled={buttonDisabled}
 							>
 								{' '}
@@ -63,10 +64,10 @@ export default function Table(props) {
 								{' '}
 								Page {CurrentPage} of {TotalPages}{' '}
 							</div>
-
+							{console.log(context)}
 							<button
 								className={buttonDisabledIncrement ? `${pagination__right} ${disabled}` : pagination__right}
-								onClick={context.handleRightPagination}
+								onClick={handleRightPagination} //pass the admin user data to the handle right pagination function
 								// disabled={buttonDisabled}
 							>
 								{' '}

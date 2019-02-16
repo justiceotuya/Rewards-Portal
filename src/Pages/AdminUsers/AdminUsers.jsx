@@ -7,10 +7,7 @@ import { DataContext } from '../../App';
 import style from './AdminUsers.module.scss';
 import Table from '../../components/Table/Table';
 
-import {AdminUsersTableHeaderList,
-AdminUsersTableBodyList} from './AdminUsersComponents/AdminUsersComponents'
-
-
+import { AdminUsersTableHeaderList, AdminUsersTableBodyList } from './AdminUsersComponents/AdminUsersComponents';
 
 export default function AdminUsers(props) {
 	return (
@@ -38,10 +35,13 @@ export default function AdminUsers(props) {
 						TotalPages={context.adminUserData.TotalPages}
 						buttonDisabledIncrement={context.adminUserData.disabledIncrement}
 						buttonDisabledDecrement={context.adminUserData.disabledDecrement}
-						SmallestItemNumber={context.adminUserData.adminUserData[0].id}
-						LargestItemNumber={context.adminUserData.adminUserData[context.adminUserData.adminUserData.length - 1].id}
-						TotalDataLength={context.adminUserData.TotalAdminUserData.length}
+						SmallestItemNumber={context.adminUserData.displayedData[0].id}
+						LargestItemNumber={context.adminUserData.displayedData[context.adminUserData.displayedData.length - 1].id}
+						TotalDataLength={context.adminUserData.TotalData.length}
 						CurrentPage={context.adminUserData.currentPage}
+						handleLeftPagination={() => context.handleLeftPagination('adminUserData')}
+						handleRightPagination={() => context.handleRightPagination('adminUserData')}
+						// adminUserData
 						// totalPages={context.adminUserData.totalPage}
 					/>
 
