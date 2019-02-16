@@ -1,7 +1,7 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, {  useState  } from 'react';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import moment from 'moment';
-import DayPicker, { DateUtils } from 'react-day-picker';
+import { DateUtils } from 'react-day-picker';
 import { Route, Switch } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import PortalReport from './Pages/PortalReport/PortalReport';
@@ -135,7 +135,6 @@ const App = props => {
 			newData.push(data[i]);
 			count = i;
 		}
-		console.log(newData);
 		return newData;
 	};
 
@@ -195,7 +194,6 @@ const App = props => {
 		};
 
 		Object.assign(data, newObject);
-		console.log('data', data);
 		return newData;
 	};
 
@@ -274,7 +272,6 @@ const App = props => {
 		deviceGroup === 'mobile' || deviceGroup === 'tablet'
 			? setToggleSideBar(!toggleSideBar)
 			: setToggleSideBar(toggleSideBar);
-		console.log('toggleSideBar', toggleSideBar);
 	};
 
 	const contextValue = {

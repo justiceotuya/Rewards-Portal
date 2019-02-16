@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import Login from './Pages/Login/Login';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 const customHistory = createBrowserHistory();
 
 ReactDOM.render(
-	<BrowserRouter history={customHistory}>
+	<HashRouter history={customHistory}>
 		<App />
-	</BrowserRouter>,
+	</HashRouter>,
 	document.getElementById('root')
 );
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './PageHeader.module.scss';
 import PageHeaderList from './PageHeaderList/PageHeaderList';
 import Button from '../Button/Button';

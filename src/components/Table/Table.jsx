@@ -64,7 +64,6 @@ export default function Table(props) {
 								{' '}
 								Page {CurrentPage} of {TotalPages}{' '}
 							</div>
-							{console.log(context)}
 							<button
 								className={buttonDisabledIncrement ? `${pagination__right} ${disabled}` : pagination__right}
 								onClick={handleRightPagination} //pass the admin user data to the handle right pagination function

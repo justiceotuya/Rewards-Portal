@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Layout from '../../Layout/Layout';
+import React from 'react';
+// import Layout from '../../Layout/Layout';
 import PageHeader from '../../components/PageHeader/PageHeader';
 import DateRangePicker from '../../components/DateRangePicker/DateRangePicker';
 import Modal from '../../components/Modal/Modal';
@@ -8,7 +8,6 @@ import style from './Dashboard.module.scss';
 import { SmallGrid, BigGrid } from '../../components/Grid/Grid';
 
 export default function Dashboard(props) {
-
 	return (
 		<DataContext.Consumer>
 			{/* <React.Fragment> */}

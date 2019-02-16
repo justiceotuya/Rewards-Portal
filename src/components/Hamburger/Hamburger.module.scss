@@ -5,10 +5,6 @@
 	padding: 1.5rem;
 	transition: all 0.3s;
 
-	&:active &__item {
-		padding: 1rem;
-	}
-
 	&__item {
 		position: absolute;
 		background-color: #2f2d2e;
