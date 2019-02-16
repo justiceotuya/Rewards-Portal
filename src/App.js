@@ -2,14 +2,20 @@ import React, { Component, useState, useEffect } from 'react';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import moment from 'moment';
 import DayPicker, { DateUtils } from 'react-day-picker';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import PortalReport from './Pages/PortalReport/PortalReport';
 import AdminUsers from './Pages/AdminUsers/AdminUsers';
 import TotalAdminUserData from './assets/Data/adminData.json';
 import TotalCustomersData from './assets/Data/customersData.json';
 import Login from './Pages/Login/Login';
+
+//create baseurl
+const baseUrl = process.env.PUBLIC_URL;
+
+//create context to share data
 export const DataContext = React.createContext();
+
 const App = props => {
 	// create a context to pass data to all children
 	// const DataContext = React.createContext();
@@ -301,10 +307,12 @@ const App = props => {
 	) : (
 		<DataContext.Provider value={contextValue}>
 			<Layout>
-				<Route path="/" exact component={Dashboard} />
-				<Route path="/dashboard" exact component={Dashboard} />
-				<Route exact path="/reporting/portal-report" component={PortalReport} />
-				<Route exact path="/user-management/admin-users" component={AdminUsers} />
+				<Switch>
+					<Route path={baseUrl + '/'} exact component={Dashboard} />
+					<Route path={baseUrl + '/dashboard'} component={Dashboard} />
+					<Route exact path={baseUrl + '/reporting/portal-report'} component={PortalReport} />
+					<Route exact path={baseUrl + '/user-management/admin-users'} component={AdminUsers} />
+				</Switch>
 			</Layout>
 		</DataContext.Provider>
 	);
