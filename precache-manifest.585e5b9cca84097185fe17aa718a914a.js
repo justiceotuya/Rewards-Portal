@@ -36,12 +36,12 @@ self.__precacheManifest = [
     "url": "/Rewards-Portal/static/media/icons.6b3d4fd5.woff"
   },
   {
-    "revision": "6f4fe3ca482221e7c0d8c1baa5f31100",
-    "url": "/Rewards-Portal/static/media/CircularStd-Bold.6f4fe3ca.woff"
-  },
-  {
     "revision": "c47d7e581f2a563f8dedd4509c106fb8",
     "url": "/Rewards-Portal/static/media/CircularStd-Book.c47d7e58.woff"
+  },
+  {
+    "revision": "6f4fe3ca482221e7c0d8c1baa5f31100",
+    "url": "/Rewards-Portal/static/media/CircularStd-Bold.6f4fe3ca.woff"
   },
   {
     "revision": "b5fa1b553516d1cf8d03d6b4588058a0",
